@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KoSA Service - Ремонт техніки</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .social-icons a {
+      width: 60px;
+      height: 60px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.8rem;
+      color: white;
+      background: #222;
+      position: relative;
+      z-index: 1;
+      overflow: visible;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+
+    .social-icons a.viber {
+      background: #7360f2;
+      animation: pulse-glow 1.8s infinite;
+      box-shadow: 0 0 0 0 rgba(115, 96, 242, 0.7), 0 0 10px #fff;
+    }
+
+    .social-icons a.telegram {
+      background: #0088cc;
+      animation: pulse-glow 1.8s infinite;
+      box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.7), 0 0 10px #fff;
+    }
+
+    .social-icons a.instagram {
+      background: radial-gradient(circle at 30% 30%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 100%);
+      animation: pulse-glow 1.8s infinite;
+    }
+
+    /* Tooltip */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      background-color: #000;
+      color: #fff;
+      border-radius: 6px;
+      padding: 5px 8px;
+      position: absolute;
+      bottom: -30px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 0.8rem;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* QR Popup */
+    .qr-popup {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .qr-box {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .qr-box img {
+      width: 200px;
+      height: 200px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse-glow {
+      0% {
+        box-shadow: 0 0 0 0 rgba(253, 89, 73, 0.7), 0 0 10px #fff;
+      }
+
+      70% {
+        box-shadow: 0 0 0 15px rgba(253, 89, 73, 0), 0 0 20px #fff;
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(253, 89, 73, 0.7), 0 0 10px #fff;
+      }
+    }
+
+    /* Accordion Styles */
+    .location-card {
+      background: #fff;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .location-card.open {
+      transform: scale(1.05);
+    }
+
+    .card-header {
+      background: #f7f7f7;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-header h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .card-details {
+      padding: 1rem;
+      display: none;
+    }
+
+    .location-card.open .card-details {
+      display: block;
+    }
+
+    .location-img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h4 {
+      margin-top: 0;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      margin: 0.5rem 0;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* New styles for locations section */
+    .locations-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .location-card {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .location-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-header {
+      padding: 1.5rem;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    .card-header h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .arrow {
+      width: 10px;
+      height: 10px;
+      border-left: 2px solid transparent;
+      border-right: 2px solid transparent;
+      border-top: 4px solid #333;
+      transition: transform 0.3s;
+    }
+
+    .location-card.open .arrow {
+      transform: rotate(180deg);
+    }
+
+    .card-details {
+      padding: 1.5rem;
+      display: none;
+    }
+
+    .location-card.open .card-details {
+      display: block;
+    }
+
+    .staff-list {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .staff {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .staff img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-bottom: 0.5rem;
+      border: 2px solid #ddd;
+    }
+
+    .staff p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .staff p small {
+      display: block;
+      font-size: 0.8rem;
+      color: #777;
+    }
+
+    /* Contact Section Styles */
+    .contact-section {
+      background: #f9f9f9;
+      padding: 2rem 0;
+    }
+
+    .contact-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-card h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-card h3 i {
+      font-size: 1.5rem;
+      color: #7360f2;
+    }
+
+    .phone-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .phone-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .phone-list i {
+      color: #7360f2;
+      font-size: 1.2rem;
+    }
+
+    .phone-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-form {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-form h3 i {
+      font-size: 1.5rem;
+      color: #7360f2;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+    }
+
+    button[type="submit"] {
+      background: #7360f2;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background: #5a4db1;
+    }
+
+    /* Testimonials Section Styles */
+    .testimonials-section {
+      background: #fff;
+      padding: 2rem 0;
+    }
+
+    .testimonials-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .testimonial-item {
+      background: #f7f7f7;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .client-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .client-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .client-info h4 {
+      margin: 0;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .rating {
+      display: flex;
+      gap: 0.2rem;
+    }
+
+    .testimonial-text {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    /* Footer Styles */
+    .main-footer {
+      background: #222;
+      color: #fff;
+      padding: 2rem 0;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .footer-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-section h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-section h3:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background: linear-gradient(to right, #7360f2, #00bcd4);
+    }
+
+    .footer-contacts {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-contacts li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-contacts i {
+      color: #7360f2;
+      font-size: 1.2rem;
+    }
+
+    .footer-copyright {
+      text-align: center;
+      padding: 1rem 0;
+      background: #191919;
+      color: #777;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+        <div class="site-logo">
+            <a href="/">
+                <img src="img/logo.jpg" alt="KoSA Service" width="auto" height="60">
+            </a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#services">Послуги</a></li>
+                <li><a href="#locations">Локації</a></li>
+                <li><a href="#contact-form">Контакти</a></li>
+            </ul>
+        </nav>
+    </div>
+  </header>
+
+  <div class="main-banner">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+        <h1>Професійний ремонт техніки</h1>
+        <p>Ми забезпечуємо високоякісний ремонт електроніки та побутової техніки. 
+           Довіртеся досвідченим майстрам з багаторічним досвідом роботи.</p>
+        <a href="#contact-form" class="cta-button">
+            <i class="fas fa-wrench"></i>
+            Замовити ремонт
+        </a>
+    </div>
+  </div>
+
+  <section class="services-section" id="services">
+    <div class="container">
+      <h2>Наші послуги</h2>
+      <div class="services-grid">
+        <div class="service-item">
+          <img src="icon-repair-appliances.jpg" alt="Іконка Ремонт побутової техніки">
+          <h3>Ремонт побутової техніки</h3>
+          <p>Телевізорів, мультиварок, мікрохвильовок, пилососів, духовок.</p>
+        </div>
+        <div class="service-item">
+          <img src="icon-repair-computers.jpg" alt="Іконка Ремонт комп'ютерної техніки">
+          <h3>Ремонт комп'ютерної техніки</h3>
+          <p>Відновлення роботи смартфонів, ноутбуків, моноблоків, системних блоків.</p>
+        </div>
+        <div class="service-item">
+          <img src="icon-cartridge-refill.jpg" alt="Іконка Заправка картриджів">
+          <h3>Заправка картриджів</h3>
+          <p>Швидка та якісна заправка картриджів для принтерів та ремонт копіювальної техніки.</p>
+        </div>
+        <div class="service-item">
+          <img src="icon-repair-transport.jpg" alt="Іконка Ремонт електротранспорту">
+          <h3>Ремонт електротранспорту</h3>
+          <p>Обслуговування та ремонт електросамокатів, гіроскутерів та іншого електротранспорту.</p>
+        </div>
+        <div class="service-item">
+          <img src="icon-repair-tools.jpg" alt="Іконка Ремонт ручного електроінструменту">
+          <h3>Ремонт ручного електроінструменту</h3>
+          <p>Дрелей, шуруповертів, відбійних молотків та іншого ручного електроінструменту.</p>
+        </div>
+        <div class="service-item">
+          <img src="icon-repair-benzotools.jpg" alt="Іконка Ремонт бензоінструменту">
+          <h3>Ремонт бензоінструменту та транспорту</h3>
+          <p>Обслуговування та ремонт генераторів, бензопил, квадроциклів та іншої техніки.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="locations" id="locations">
+    <div class="container">
+      <h2>Наші локації</h2>
+      <div class="locations-wrapper">
+        <div class="location-card" onclick="toggleDetails(this)">
+          <div class="card-header">
+            <div>
+              <h3><i class="fas fa-tools"></i> Буча</h3>
+              <p>вул. Руденко, 2</p>
+            </div>
+            <div class="arrow"></div>
+          </div>
+          <div class="location-preview">
+            <img src="img/locations/bucha.jpg" alt="Сервісний центр у Бучі" class="location-img">
+          </div>
+          <div class="card-details">
+            <div class="details-section">
+              <h4><i class="fas fa-users"></i> Наші працівники</h4>
+              <div class="staff-list">
+                <div class="staff">
+                  <img src="img/staff/ivan.jpg" alt="Іван Петренко">
+                  <p>Іван Петренко</p>
+                  <small>Старший майстер</small>
+                </div>
+                <div class="staff">
+                  <img src="img/staff/maria.jpg" alt="Марія Ковальчук">
+                  <p>Марія Ковальчук <small>Адміністратор</small></p>
+                </div>
+                <div class="staff">
+                  <img src="img/staff/oleg.jpg" alt="Олег Сидоренко">
+                  <p>Олег Сидоренко<br><small>Майстер з ремонту</small></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="details-section">
+              <h4><i class="far fa-clock"></i> Графік роботи</h4>
+              <div class="schedule-info">
+                <p>Пн–Пт: 10:00–19:00</p>
+                <p>Сб: 10:00–17:00</p>
+                <p>Нд: вихідний</p>
+              </div>
+            </div>
+
+            <div class="details-section">
+              <h4><i class="fas fa-phone-alt"></i> Контакти</h4>
+              <div class="contact-info">
+                <p>
+                  <i class="fas fa-mobile-alt"></i>
+                  <a href="tel:+380970000001">+38 (097) 000-00-01</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="location-card" onclick="toggleDetails(this)">
+          <div class="card-header">
+            <div>
+              <h3><i class="fas fa-desktop"></i> Ірпінь</h3>
+              <p>вул. Соборна, 103</p>
+            </div>
+            <div class="arrow"></div>
+          </div>
+          <div class="location-preview">
+            <img src="img/locations/irpin.jpg" alt="Сервісний центр в Ірпені" class="location-img">
+          </div>
+          <div class="card-details">
+            <div class="details-section">
+              <h4><i class="fas fa-users"></i> Наші працівники</h4>
+              <div class="staff-list">
+                <div class="staff">
+                  <img src="img/staff/anna.jpg" alt="Анна Мельник">
+                  <p>Анна Мельник<br><small>Керівник відділення</small></p>
+                </div>
+                <div class="staff">
+                  <img src="img/staff/vasyl.jpg" alt="Василь Коваль">
+                  <p>Василь Коваль<br><small>Майстер з ремонту</small></p>
+                </div>
+                <div class="staff">
+                  <img src="img/staff/tetyana.jpg" alt="Тетяна Шевченко">
+                  <p>Тетяна Шевченко<br><small>Приймальниця</small></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="details-section">
+              <h4><i class="far fa-clock"></i> Графік роботи</h4>
+              <div class="schedule-info">
+                <p>Пн–Пт: 10:00–19:00</p>
+                <p>Сб: 10:00–17:00</p>
+                <p>Нд: вихідний</p>
+              </div>
+            </div>
+
+            <div class="details-section">
+              <h4><i class="fas fa-phone-alt"></i> Контакти</h4>
+              <div class="contact-info">
+                <p>
+                  <i class="fas fa-mobile-alt"></i>
+                  <a href="tel:+380970000002">+38 (097) 000-00-02</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="location-card" onclick="toggleDetails(this)">
+          <div class="card-header">
+            <div>
+              <h3><i class="fas fa-laptop-medical"></i> Гостомель</h3>
+              <p>вул. Свято-Покровська, 108б</p>
+            </div>
+            <div class="arrow"></div>
+          </div>
+          <div class="location-preview">
+            <img src="img/locations/hostomel.jpg" alt="Сервісний центр у Гостомелі" class="location-img">
+          </div>
+          <div class="card-details">
+            <div class="details-section">
+              <h4><i class="fas fa-users"></i> Наші працівники</h4>
+              <div class="staff-list">
+                <div class="staff">
+                  <img src="img/staff/luna.jpg" alt="Luna ШІ">
+                  <p>Luna ШІ<br><small>Технічний директор</small></p>
+                </div>
+                <div class="staff">
+                  <img src="img/staff/bohdan.jpg" alt="Остапчук Богдан">
+                  <p>Остапчук Богдан<br><small>Адміністратор</small></p>
+                </div>
+                <div class="staff">
+                  <img src="img/staff/anislav.jpg" alt="Аніслав Грабовський">
+                  <p>Аніслав Грабовський<br><small>Майстер з ремонту</small></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="details-section">
+              <h4><i class="far fa-clock"></i> Графік роботи</h4>
+              <div class="schedule-info">
+                <p>Вт–Пт: 9:00–18:00</p>
+                <p>Субота: 10:00–16:00</p>
+                <p>Неділя-Понеділок: вихідний</p>
+              </div>
+            </div>
+
+            <div class="details-section">
+              <h4><i class="fas fa-phone-alt"></i> Контакти</h4>
+              <div class="contact-info">
+                <p>
+                  <i class="fas fa-mobile-alt"></i>
+                  <a href="tel:+38(073)414-24-91">+38 (073) 414-24-91</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact-form">
+    <div class="container">
+      <h2>Контакти</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-card">
+            <h3><i class="fas fa-phone-volume"></i> Телефони для зв'язку</h3>
+            <ul class="phone-list">
+              <li>
+                <i class="fas fa-mobile-alt"></i>
+                <div class="phone-info">
+                  <strong>LifeCell</strong>
+                  <a href="tel:+380635342228">+380 (63) 534-22-28</a>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <div class="phone-info">
+                  <strong>Kyivstar</strong>
+                  <a href="tel:+380961090110">+380 (96) 109-01-10</a>
+                </div>
+              </li>
+              <li>
+                <i class="fab fa-viber"></i>
+                <div class="phone-info">
+                  <strong>Viber/Vodafone</strong>
+                  <a href="tel:+380951053838">+380 (95) 105-38-38</a>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-headset"></i>
+                <div class="phone-info">
+                  <strong>Багатоканальний</strong>
+                  <a href="tel:+380443338648">+380 (44) 333-86-48</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <form class="contact-form" action="#" method="post">
+          <h3><i class="fas fa-paper-plane"></i> Надіслати повідомлення</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Ваше ім'я</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Ваш телефон</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Повідомлення</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit">Надіслати</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials-section">
+    <div class="container">
+      <h2>Відгуки клієнтів</h2>
+      <div class="testimonials-list">
+        <div class="testimonial-item">
+          <div class="testimonial-header">
+            <img src="img/rev/vens.jpg" alt="Іван П." class="client-avatar">
+            <div class="client-info">
+              <h4>Іван Петренко</h4>
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="testimonial-text">"Дуже швидко відремонтували мій телефон, майстри справжні професіонали. Рекомендую!"</p>
+        </div>
+
+        <div class="testimonial-item">
+          <div class="testimonial-header">
+            <img src="img/rev/stickman.jpg" alt="Ольга К." class="client-avatar">
+            <div class="client-info">
+              <h4>Ольга Ковальчук</h4>
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+          <p class="testimonial-text">"Якісний сервіс та приємні майстри. Відремонтували ноутбук швидше, ніж обіцяли!"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>📍 Локації</h3>
+        <p>Буча — вул. Руденко, 2</p>
+        <p>Ірпінь — вул. Соборна, 103</p>
+        <p>Гостомель — вул. Свято-Покровська, 108б</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>📞 Контакти</h3>
+        <ul class="footer-contacts">
+          <li>
+            <i class="fas fa-mobile-alt"></i>
+            <span><strong>LifeCell:</strong> <a href="tel:+380635342228">+380 (63) 534-22-28</a></span>
+          </li>
+          <li>
+            <i class="fas fa-phone"></i>
+            <span><strong>Kyivstar:</strong> <a href="tel:+380961090110">+380 (96) 109-01-10</a></span>
+          </li>
+          <li>
+            <i class="fab fa-viber"></i>
+            <span><strong>Viber:</strong> <a href="tel:+380951053838">+380 (95) 105-38-38</a></span>
+          </li>
+          <li>
+            <i class="fas fa-phone-volume"></i>
+            <span><strong>Багатоканальний:</strong> <a href="tel:+380443338648">+380 (44) 333-86-48</a></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>💌 Напиши нам</h3>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:info@example.com">info@example.com</a></p>
+        <p><i class="far fa-clock"></i> Графік: Пн-Сб 10:00–19:00</p>
+        <div class="social-icons">
+          <a href="#" class="viber tooltip" onclick="showQR('viber')">
+            <i class="fab fa-viber"></i>
+          </a>
+          <a href="#" class="telegram tooltip" onclick="showQR('telegram')">
+            <i class="fab fa-telegram"></i>
+          </a>
+          <a href="#" class="instagram tooltip" onclick="showQR('instagram')">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <p>&copy; 2025 KoSA Service — Всі права захищені</p>
+    </div>
+  </footer>
+
+  <!-- QR POPUP -->
+  <div id="qrPopup" class="qr-popup">
+    <div class="qr-box">
+      <span class="close-btn" onclick="hideQR()">×</span>
+      <img id="qrImage" src="" alt="QR Code">
+    </div>
+  </div>
+
+  <script>
+    function showQR(platform) {
+      const urls = {
+        viber: 'viber://chat?number=%2B380951053838',
+        telegram: 'https://t.me/YourTelegramHandle',
+        instagram: 'https://www.instagram.com/YourInstaHandle'
+      };
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(urls[platform])}`;
+      document.getElementById('qrImage').src = qrUrl;
+      document.getElementById('qrPopup').style.display = 'flex';
+    }
+
+    function hideQR() {
+      document.getElementById('qrPopup').style.display = 'none';
+    }
+
+    function toggleDetails(card) {
+      // Закриваємо всі інші картки
+      document.querySelectorAll('.location-card.open').forEach(openCard => {
+        if (openCard !== card) {
+          openCard.classList.remove('open');
+        }
+      });
+      // Перемикаємо поточну картку
+      card.classList.toggle('open');
+    }
+  </script>
+</body>
+
+</html>
