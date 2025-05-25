@@ -1,0 +1,1213 @@
+/* Base styles and reset */
+:root {
+    --primary-color: #000; /* Чорний за замовчуванням */
+    --secondary-color: #fff; /* Білий за замовчуванням */
+    --accent-color: #FFDA44; /* Жовтий за замовчуванням */
+    --text-color-dark: #333;
+    --text-color-light: #555;
+    --background-light-gray: #f8f8f8;
+    --background-almost-white: #fefefe;
+    --font-main: 'Roboto', sans-serif;
+    --container-max-width: 1100px;
+    --border-radius-main: 5px;
+    --border-radius-large: 8px;
+    --shadow-light: 0 3px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 5px 12px rgba(0, 0, 0, 0.15);
+    --header-height: 80px;
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Плавний скрол */
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--text-color-dark);
+    background-color: var(--secondary-color);
+    padding-top: var(--header-height); /* Відступ для фіксованої шапки */
+}
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 80px 0;
+    scroll-margin-top: var(--header-height); /* Відступ для скролу до секцій */
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+h1 { /* Загальний стиль для h1, якщо не перевизначено */
+    font-size: 2.5em; /* Збільшено для головного заголовку */
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+/* Візуально прихований клас для доступності */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+
+/* Styles for the site header */
+header {
+    height: var(--header-height);
+    background-color: var(--primary-color);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-medium);
+    display: flex; /* Для центрування контенту */
+    align-items: center; /* Для центрування контенту */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Щоб контейнер займав всю ширину */
+}
+
+.site-logo {
+    padding: 10px 0;
+}
+
+.site-logo img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.main-nav a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-main);
+    transition: all var(--transition-speed) ease;
+}
+
+.main-nav a:hover {
+    color: var(--accent-color);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Styles for Main Banner */
+.main-banner {
+    position: relative;
+    width: 100%;
+    min-height: 90vh;
+    background: url('img/baner.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color); /* Колір тексту для банера */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Тінь для тексту */
+}
+
+.banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.6) 100%
+    );
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 3rem;
+    text-align: center;
+    animation: fadeInUp 1s ease;
+}
+
+.banner-content h1 {
+    color: var(--secondary-color); /* Перевизначення кольору для h1 в банері */
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.banner-content p {
+    color: var(--secondary-color); /* Перевизначення кольору для p в банері */
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius-main);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Додано тінь */
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Збільшено тінь при наведенні */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styles for Services Section */
+.services-section {
+    background-color: var(--secondary-color);
+    padding: 80px 0; /* Забезпечення відступу */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Зменшено minmax для кращої адаптивності */
+    gap: 30px;
+    margin-top: 40px;
+    padding: 0 15px;
+}
+
+.service-item {
+    background-color: var(--background-almost-white);
+    padding: 30px 25px;
+    border-radius: var(--border-radius-large);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 5px solid var(--accent-color);
+    box-shadow: var(--shadow-light);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-item:hover {
+    transform: translateY(-8px); /* Більший ефект підняття */
+    box-shadow: var(--shadow-medium); /* Більша тінь */
+}
+
+.service-item img {
+    width: 100%;
+    max-width: 100px; /* Зменшено розмір іконок */
+    height: auto;
+    margin: 0 auto 20px;
+    object-fit: contain;
+    transition: transform 0.3s ease; /* Анімація для іконок */
+}
+
+.service-item:hover img {
+    transform: scale(1.1); /* Збільшення іконки при наведенні */
+}
+
+.service-item h3 {
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.service-item p {
+    font-size: 0.95em;
+    color: var(--text-color-light);
+}
+
+/* Styles for Locations Section */
+.locations {
+    background-color: var(--background-light-gray);
+    padding: 80px 0; /* Забезпечення відступу */
+}
+
+.locations-wrapper {
+    display: grid; /* Використання grid для кращого контролю */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Адаптивні колонки */
+    gap: 30px; /* Збільшено відступ між картками */
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.location-card {
+    background: var(--background-almost-white);
+    border-radius: var(--border-radius-large);
+    padding: 1.5rem; /* Збільшено внутрішній відступ */
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    overflow: hidden; /* Приховуємо переповнення при закритих деталях */
+    display: flex;
+    flex-direction: column;
+}
+
+.location-card:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-5px); /* Ефект підняття при наведенні */
+}
+
+.location-preview {
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius-main);
+    overflow: hidden;
+}
+
+.location-preview img {
+    width: 100%;
+    height: 200px; /* Фіксована висота для зображень локацій */
+    object-fit: cover; /* Обрізати зображення, щоб воно заповнювало контейнер */
+    border-radius: var(--border-radius-main);
+    transition: transform 0.3s ease;
+}
+
+.location-card:hover .location-preview img {
+    transform: scale(1.05); /* Збільшення зображення при наведенні на картку */
+}
+
+.card-header {
+    display: flex;
+    align-items: center; /* Вирівнювання по центру */
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 1rem; /* Відступ після заголовка */
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.3em; /* Збільшено розмір заголовка */
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-color);
+}
+
+.card-header h3 i {
+    color: var(--accent-color);
+    font-size: 1.4em; /* Збільшено розмір іконки */
+    transition: transform 0.3s ease;
+}
+
+.location-card.open .card-header h3 i {
+    transform: rotate(15deg); /* Невеликий поворот іконки при відкритті */
+}
+
+.card-header p {
+    margin-top: 5px;
+    color: var(--text-color-light);
+    font-size: 1em; /* Збільшено розмір тексту адреси */
+}
+
+.arrow {
+    width: 15px; /* Збільшено розмір стрілки */
+    height: 15px;
+    border-right: 3px solid var(--accent-color); /* Збільшено товщину стрілки */
+    border-bottom: 3px solid var(--accent-color);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+    margin-left: 15px;
+    flex-shrink: 0; /* Щоб стрілка не стискалася */
+}
+
+.location-card.open .arrow {
+    transform: rotate(-135deg);
+}
+
+.card-details {
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.7s ease-out, opacity 0.5s ease-out; /* Плавніша анімація */
+    overflow: hidden;
+    padding-top: 0; /* Початковий відступ */
+}
+
+.location-card.open .card-details {
+    max-height: 1000px; /* Достатньо велике значення */
+    opacity: 1;
+    padding-top: 1.5rem; /* Відступ при відкритті */
+}
+
+.details-section {
+    padding: 15px 0; /* Збільшено відступ секцій */
+    border-top: 1px solid #eee; /* Роздільник між секціями */
+}
+
+.details-section:first-child {
+    border-top: none; /* Без верхнього роздільника для першої секції */
+}
+
+.details-section h4 {
+    font-size: 1.1em; /* Збільшено розмір заголовка */
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-color);
+}
+
+.details-section h4 i {
+    color: var(--accent-color);
+    font-size: 1.2em;
+}
+
+.staff-list {
+    display: flex; /* Змінено на flex для горизонтального розташування */
+    flex-wrap: wrap; /* Дозволяє переносити на новий рядок */
+    justify-content: center; /* Центрування працівників */
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.staff {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px; /* Фіксована ширина для кожного працівника */
+}
+
+.staff img {
+    width: 70px; /* Збільшено розмір аватара */
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow-light);
+    border: 3px solid var(--accent-color); /* Додано обведення */
+}
+
+.staff p {
+    margin: 0;
+    font-weight: 500;
+    color: var(--text-color-dark);
+    font-size: 0.9em;
+    line-height: 1.2;
+}
+
+.staff small {
+    display: block;
+    margin-top: 4px;
+    color: var(--text-color-light);
+    font-size: 0.8em;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.contact-info i {
+    color: var(--accent-color);
+    width: 20px;
+    text-align: center;
+}
+
+.schedule-info {
+    display: grid;
+    gap: 5px;
+    font-size: 0.95em;
+    color: var(--text-color-dark);
+}
+
+/* Стилі для футера */
+.main-footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 60px 0 30px;
+    margin-top: 60px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Адаптивні колонки */
+    gap: 40px;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-section h3 {
+    color: var(--accent-color);
+    font-size: 1.4em; /* Збільшено розмір заголовка */
+    margin-bottom: 20px;
+    text-align: left;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px; /* Коротша лінія під заголовком */
+    height: 3px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+.footer-section p {
+    margin-bottom: 10px;
+    font-size: 1em; /* Збільшено розмір тексту */
+    opacity: 0.9;
+}
+
+.footer-section a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+.footer-section a:hover {
+    color: var(--secondary-color);
+}
+
+.footer-contacts li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.footer-contacts i {
+    color: var(--accent-color);
+    font-size: 1.3em; /* Збільшено розмір іконки */
+    width: 25px; /* Збільшено ширину для центрування */
+    text-align: center;
+}
+
+.footer-copyright {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95em;
+    opacity: 0.7;
+}
+
+/* Стилі для секції контактів */
+.contact-section {
+    background-color: var(--background-light-gray);
+    padding: 80px 0; /* Забезпечення відступу */
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.contact-card { /* Залишаємо цей клас для загального стилю карток */
+    background: var(--secondary-color);
+    border-radius: var(--border-radius-large);
+    padding: 30px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.contact-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-color);
+    text-align: left;
+    margin-bottom: 25px;
+    font-size: 1.4em; /* Збільшено розмір заголовка */
+}
+
+.contact-card h3 i {
+    font-size: 1.6em; /* Збільшено розмір іконки */
+    color: var(--accent-color);
+}
+
+.phone-list {
+    list-style: none;
+    padding: 0;
+}
+
+.phone-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.phone-list li:last-child {
+    border-bottom: none;
+}
+
+.phone-list i {
+    font-size: 1.6em; /* Збільшено розмір іконки */
+    color: var(--accent-color);
+    width: 35px; /* Збільшено ширину для центрування */
+    text-align: center;
+}
+
+.phone-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.phone-info strong {
+    color: var(--text-color-dark);
+    margin-bottom: 3px;
+    font-size: 1.1em;
+}
+
+.phone-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.2em; /* Збільшено розмір тексту телефону */
+    transition: color 0.3s ease;
+}
+
+.phone-info a:hover {
+    color: var(--accent-color);
+}
+
+/* Стилі для форми */
+.contact-form {
+    background: var(--secondary-color);
+    border-radius: var(--border-radius-large);
+    padding: 30px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.contact-form h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    margin-bottom: 25px;
+    font-size: 1.4em; /* Збільшено розмір заголовка */
+}
+
+.contact-form h3 i {
+    font-size: 1.6em; /* Збільшено розмір іконки */
+    color: var(--accent-color);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color-dark);
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: var(--border-radius-main);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1em;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 218, 68, 0.3); /* Додано тінь при фокусі */
+    outline: none;
+}
+
+.contact-form button {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 15px 30px;
+    border-radius: var(--border-radius-main);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form button:hover {
+    background: var(--primary-color);
+    color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Стилі для відгуків */
+.testimonials-section {
+    background-color: var(--secondary-color);
+    padding: 80px 0; /* Забезпечення відступу */
+}
+
+.testimonials-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.testimonial-item {
+    background: var(--background-light-gray);
+    border-radius: var(--border-radius-large);
+    padding: 25px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.testimonial-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.client-avatar {
+    width: 70px; /* Збільшено розмір аватара */
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-color); /* Додано обведення */
+}
+
+.client-info h4 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 1.2em; /* Збільшено розмір імені */
+    text-align: left; /* Вирівнювання тексту */
+}
+
+.rating {
+    color: var(--accent-color);
+    margin-top: 5px;
+    font-size: 1.1em; /* Збільшено розмір зірок */
+}
+
+.testimonial-text {
+    color: var(--text-color-dark);
+    font-style: italic;
+    line-height: 1.6;
+    font-size: 1em; /* Збільшено розмір тексту відгуку */
+}
+
+/* QR Popup */
+.qr-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999; /* Вищий z-index */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Ефект розмиття фону */
+    animation: fadeInBackground 0.3s ease-out;
+}
+
+.qr-box {
+    background: var(--secondary-color);
+    padding: 2.5rem; /* Збільшено відступ */
+    border-radius: 1.5rem; /* Більш заокруглені кути */
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Більша тінь */
+    animation: zoomIn 0.3s ease-out;
+}
+
+.qr-box img {
+    width: 250px; /* Збільшено розмір QR */
+    height: 250px;
+    margin-bottom: 1rem;
+    border: 5px solid var(--accent-color); /* Обведення QR-коду */
+    border-radius: var(--border-radius-main);
+}
+
+.qr-text {
+    font-size: 1.1em;
+    color: var(--primary-color);
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 2rem; /* Збільшено розмір кнопки закриття */
+    cursor: pointer;
+    color: var(--text-color-dark);
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: var(--accent-color);
+}
+
+@keyframes fadeInBackground {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-radius: 6px;
+    padding: 8px 12px; /* Збільшено відступ */
+    position: absolute;
+    bottom: 120%; /* Розташування над іконкою */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s, bottom 0.3s;
+    font-size: 0.9rem; /* Збільшено розмір шрифту */
+    white-space: nowrap; /* Запобігає переносу тексту */
+    z-index: 10; /* Щоб тултіп був над іншими елементами */
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    bottom: 100%; /* Трохи підняти при наведенні */
+}
+
+/* Анімації для іконок соцмереж */
+.social-icons a {
+    width: 60px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    color: white;
+    background: #222;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+    transition: 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Більш виражена тінь */
+}
+
+.social-icons a:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7); /* Яскравіша тінь при наведенні */
+}
+
+.social-icons a.viber {
+    background: #7360f2;
+    animation: pulse-glow-viber 1.8s infinite ease-in-out; /* Окрема анімація */
+}
+
+.social-icons a.telegram {
+    background: #0088cc;
+    animation: pulse-glow-telegram 1.8s infinite ease-in-out; /* Окрема анімація */
+}
+
+.social-icons a.instagram {
+    background: radial-gradient(circle at 30% 30%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 100%);
+    animation: pulse-glow-instagram 1.8s infinite ease-in-out; /* Окрема анімація */
+}
+
+/* Оновлені ключові кадри для пульсуючого світіння */
+@keyframes pulse-glow-viber {
+    0% { box-shadow: 0 0 0 0 rgba(115, 96, 242, 0.7), 0 0 10px #fff; }
+    70% { box-shadow: 0 0 0 15px rgba(115, 96, 242, 0), 0 0 20px #fff; }
+    100% { box-shadow: 0 0 0 0 rgba(115, 96, 242, 0.7), 0 0 10px #fff; }
+}
+
+@keyframes pulse-glow-telegram {
+    0% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.7), 0 0 10px #fff; }
+    70% { box-shadow: 0 0 0 15px rgba(0, 136, 204, 0), 0 0 20px #fff; }
+    100% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.7), 0 0 10px #fff; }
+}
+
+@keyframes pulse-glow-instagram {
+    0% { box-shadow: 0 0 0 0 rgba(253, 89, 73, 0.7), 0 0 10px #fff; }
+    70% { box-shadow: 0 0 0 15px rgba(253, 89, 73, 0), 0 0 20px #fff; }
+    100% { box-shadow: 0 0 0 0 rgba(253, 89, 73, 0.7), 0 0 10px #fff; }
+}
+
+/* Стилі для нової секції "Діагностика та рекомендації" */
+.problem-solver-section {
+    background-color: var(--background-almost-white);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.problem-solver-section .section-description {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-size: 1.1em;
+    color: var(--text-color-dark);
+    line-height: 1.6;
+}
+
+.problem-solver-card {
+    background: var(--secondary-color);
+    border-radius: var(--border-radius-large);
+    padding: 40px;
+    box-shadow: var(--shadow-medium);
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.problem-solver-card .form-group {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.problem-solver-card label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: var(--primary-color);
+    font-weight: 700;
+    text-align: left;
+}
+
+.problem-solver-card textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: var(--border-radius-main);
+    font-size: 1.1em;
+    color: var(--text-color-dark);
+    resize: vertical;
+    min-height: 150px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.problem-solver-card textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 218, 68, 0.3);
+    outline: none;
+}
+
+.problem-solver-card .cta-button {
+    margin-top: 20px;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.3rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.loading-spinner {
+    display: none; /* Приховано за замовчуванням */
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--accent-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-top: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.suggestion-result {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: var(--background-light-gray);
+    border-radius: var(--border-radius-large);
+    text-align: left;
+    min-height: 100px; /* Мінімальна висота для результату */
+    border: 1px solid #eee;
+    color: var(--text-color-dark);
+    line-height: 1.8;
+}
+
+.suggestion-result p {
+    margin-bottom: 10px;
+}
+
+.suggestion-result strong {
+    color: var(--primary-color);
+}
+
+/* Медіа-запити для адаптивності */
+@media (max-width: 1200px) {
+    .locations-wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .contact-content {
+        grid-template-columns: 1fr; /* Один стовпець на планшетах */
+    }
+    .form-grid {
+        grid-template-columns: 1fr; /* Один стовпець для форми */
+    }
+    .problem-solver-card {
+        padding: 30px;
+    }
+    .problem-solver-card label {
+        font-size: 1.1em;
+    }
+    .problem-solver-card textarea {
+        font-size: 1em;
+    }
+    .problem-solver-card .cta-button {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        height: auto;
+        padding: 1rem 0;
+    }
+
+    header .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .site-logo img {
+        height: 50px;
+    }
+
+    body {
+        padding-top: 60px; /* Адаптуємо відступ для меншої шапки */
+    }
+
+    section {
+       padding: 40px 0;
+    }
+    .main-banner {
+        min-height: 350px; /* Зменшуємо висоту банера */
+    }
+    .banner-content {
+        padding: 2rem 1rem;
+    }
+    .banner-content h1 {
+        font-size: 2em;
+    }
+    .banner-content p {
+        font-size: 1em;
+    }
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.7em; }
+    h3 { font-size: 1.3em; }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Одна послуга в ряд на мобільних */
+    }
+    .testimonials-list {
+        grid-template-columns: 1fr; /* Один відгук в ряд на мобільних */
+    }
+
+    .locations-wrapper {
+        padding: 0 10px;
+    }
+
+    .location-card {
+        padding: 1rem;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    .card-header h3 {
+        font-size: 1.2em;
+    }
+    .card-header p {
+        font-size: 0.9em;
+    }
+    .arrow {
+        align-self: flex-end; /* Вирівнюємо стрілку праворуч */
+        margin-top: -30px; /* Піднімаємо стрілку, щоб вона була біля заголовка */
+    }
+    .staff-list {
+        justify-content: flex-start; /* Вирівнювання працівників ліворуч */
+        gap: 15px;
+    }
+    .staff {
+        width: 90px;
+    }
+    .staff img {
+        width: 60px;
+        height: 60px;
+    }
+    .staff p {
+        font-size: 0.8em;
+    }
+    .staff small {
+        font-size: 0.7em;
+    }
+    .problem-solver-card {
+        padding: 20px;
+    }
+    .problem-solver-card label {
+        font-size: 1em;
+    }
+    .problem-solver-card textarea {
+        font-size: 0.9em;
+    }
+    .problem-solver-card .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    .suggestion-result {
+        padding: 15px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-content h1 {
+        font-size: 1.8em;
+    }
+    .main-banner {
+        min-height: 300px;
+    }
+    .contact-form button {
+        width: 100%; /* Кнопка форми на всю ширину */
+    }
+    .social-icons a {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    .qr-box img {
+        width: 180px;
+        height: 180px;
+    }
+    .qr-text {
+        font-size: 1em;
+    }
+    .close-btn {
+        font-size: 1.8rem;
+    }
+}
