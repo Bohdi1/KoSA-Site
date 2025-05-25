@@ -637,3 +637,33 @@ ${servicesList}
 </body>
 
 </html>
+<form id="contactForm">
+  <input name="name" placeholder="Ваше ім’я">
+  <input name="phone" placeholder="Телефон">
+  <textarea name="message" placeholder="Ваше повідомлення"></textarea>
+  <button type="submit">Відправити</button>
+</form>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const data = {
+    name: e.target.name.value,
+    phone: e.target.phone.value,
+    message: e.target.message.value
+  };
+
+  const response = await fetch('https://bohdi1.github.io/kosa-site/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+
+  if (response.ok) {
+    alert('Успішно надіслано!');
+  } else {
+    alert('Щось пішло не так');
+  }
+});
+</script>
