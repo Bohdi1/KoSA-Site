@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="uk">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -24,348 +23,324 @@
         <ul>
           <li><a href="#services">Послуги</a></li>
           <li><a href="#locations">Локації</a></li>
-          <li><a href="#problem-solver">Діагностика ✨</a></li> <li><a href="#contact-form">Контакти</a></li>
+          <li><a href="#problem-solver">Діагностика ✨</a></li>
+          <li><a href="#contact-form">Контакти</a></li>
           <li><a href="#testimonials">Відгуки</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <div class="main-banner">
-    <div class="banner-overlay"></div>
-    <div class="banner-content">
-      <h1>Професійний ремонт техніки</h1>
-      <p>Ми забезпечуємо високоякісний ремонт електроніки та побутової техніки.
-        Довіртеся досвідченим майстрам з багаторічним досвідом роботи.</p>
-      <a href="#contact-form" class="cta-button">
-        <i class="fas fa-wrench"></i>
-        Замовити ремонт
-      </a>
-    </div>
-  </div>
-
-  <section class="services-section" id="services">
-    <div class="container">
-      <h2>Наші послуги</h2>
-      <div class="services-grid">
-        <div class="service-item">
-          <img src="icon-repair-appliances.jpg" alt="Іконка Ремонт побутової техніки">
-          <h3>Ремонт побутової техніки</h3>
-          <p>Телевізорів, мультиварок, мікрохвильовок, пилососів, духовок.</p>
-        </div>
-        <div class="service-item">
-          <img src="icon-repair-computers.jpg" alt="Іконка Ремонт комп'ютерної техніки">
-          <h3>Ремонт комп'ютерної техніки</h3>
-          <p>Відновлення роботи смартфонів, ноутбуків, моноблоків, системних блоків.</p>
-        </div>
-        <div class="service-item">
-          <img src="icon-cartridge-refill.jpg" alt="Іконка Заправка картриджів">
-          <h3>Заправка картриджів</h3>
-          <p>Швидка та якісна заправка картриджів для принтерів та ремонт копіювальної техніки.</p>
-        </div>
-        <div class="service-item">
-          <img src="icon-repair-transport.jpg" alt="Іконка Ремонт електротранспорту">
-          <h3>Ремонт електротранспорту</h3>
-          <p>Обслуговування та ремонт електросамокатів, гіроскутерів та іншого електротранспорту.</p>
-        </div>
-        <div class="service-item">
-          <img src="icon-repair-tools.jpg" alt="Іконка Ремонт ручного електроінструменту">
-          <h3>Ремонт ручного електроінструменту</h3>
-          <p>Дрелей, шуруповертів, відбійних молотків та іншого ручного електроінструменту.</p>
-        </div>
-        <div class="service-item">
-          <img src="icon-repair-benzotools.jpg" alt="Іконка Ремонт бензоінструменту">
-          <h3>Ремонт бензоінструменту та транспорту</h3>
-          <p>Обслуговування та ремонт генераторів, бензопил, квадроциклів та іншої техніки.</p>
-        </div>
+  <main>
+    <div class="main-banner">
+      <div class="banner-overlay"></div>
+      <div class="banner-content">
+        <h1>Професійний ремонт техніки</h1>
+        <p>Ми забезпечуємо високоякісний ремонт електроніки та побутової техніки.
+          Довіртеся досвідченим майстрам з багаторічним досвідом роботи.</p>
+        <a href="#contact-form" class="cta-button">
+          <i class="fas fa-wrench"></i>
+          Замовити ремонт
+        </a>
       </div>
     </div>
-  </section>
 
-  <section class="locations" id="locations">
-    <div class="container">
-      <h2>Наші локації</h2>
-      <div class="locations-wrapper">
-        <button class="location-card" onclick="toggleDetails(this)" onkeydown="if (event.key === 'Enter' || event.key === ' ') { toggleDetails(this); }">
-          <div class="card-header">
-            <div>
-              <h3><i class="fas fa-tools"></i> Буча</h3>
-              <p>вул. Руденко, 2</p>
-            </div>
-            <div class="arrow"></div>
+    <section class="services-section" id="services">
+      <div class="container">
+        <h2>Наші послуги</h2>
+        <div class="services-grid">
+          <div class="service-item">
+            <img src="icon-repair-appliances.jpg" alt="Ремонт побутової техніки">
+            <h3>Ремонт побутової техніки</h3>
+            <p>Телевізорів, мультиварок, мікрохвильовок, пилососів, духовок.</p>
           </div>
-          <div class="location-preview">
-            <img src="img/locations/bucha.jpg" alt="Сервісний центр у Бучі" class="location-img">
+          <div class="service-item">
+            <img src="icon-repair-computers.jpg" alt="Ремонт комп'ютерної техніки">
+            <h3>Ремонт комп'ютерної техніки</h3>
+            <p>Відновлення роботи смартфонів, ноутбуків, моноблоків, системних блоків.</p>
           </div>
-          <div class="card-details">
-            <div class="details-section">
-              <h4><i class="fas fa-users"></i> Наші працівники</h4>
-              <div class="staff-list">
-                <div class="staff">
-                  <img src="img/staff/ivan.jpg" alt="Іван Петренко">
-                  <p>Іван Петренко</p>
-                  <small>Старший майстер</small>
-                </div>
-                <div class="staff">
-                  <img src="img/staff/maria.jpg" alt="Марія Ковальчук">
-                  <p>Марія Ковальчук <small>Адміністратор</small></p>
-                </div>
-                <div class="staff">
-                  <img src="img/staff/oleg.jpg" alt="Олег Сидоренко">
-                  <p>Олег Сидоренко<br><small>Майстер з ремонту</small></p>
-                </div>
-              </div>
-            </div>
-
-            <div class="details-section">
-              <h4><i class="far fa-clock"></i> Графік роботи</h4>
-              <div class="schedule-info">
-                <p>Пн–Пт: 10:00–19:00</p>
-                <p>Сб: 10:00–17:00</p>
-                <p>Нд: вихідний</p>
-              </div>
-            </div>
-
-            <div class="details-section">
-              <h4><i class="fas fa-phone-alt"></i> Контакти</h4>
-              <div class="contact-info">
-                <p>
-                  <i class="fas fa-mobile-alt"></i>
-                  <a href="tel:+380970000001">+38 (097) 000-00-01</a>
-                </p>
-              </div>
-            </div>
+          <div class="service-item">
+            <img src="icon-cartridge-refill.jpg" alt="Заправка картриджів">
+            <h3>Заправка картриджів</h3>
+            <p>Швидка та якісна заправка картриджів для принтерів та ремонт копіювальної техніки.</p>
           </div>
-        </button>
-
-        <button class="location-card" onclick="toggleDetails(this)" onkeydown="if (event.key === 'Enter' || event.key === ' ') { toggleDetails(this); }">
-          <div class="card-header">
-            <div>
-              <h3><i class="fas fa-desktop"></i> Ірпінь</h3>
-              <p>вул. Соборна, 103</p>
-            </div>
-            <div class="arrow"></div>
+          <div class="service-item">
+            <img src="icon-repair-transport.jpg" alt="Ремонт електротранспорту">
+            <h3>Ремонт електротранспорту</h3>
+            <p>Обслуговування та ремонт електросамокатів, гіроскутерів та іншого електротранспорту.</p>
           </div>
-          <div class="location-preview">
-            <img src="img/locations/irpin.jpg" alt="Сервісний центр в Ірпені" class="location-img">
+          <div class="service-item">
+            <img src="icon-repair-tools.jpg" alt="Ремонт ручного електроінструменту">
+            <h3>Ремонт ручного електроінструменту</h3>
+            <p>Дрелей, шуруповертів, відбійних молотків та іншого ручного електроінструменту.</p>
           </div>
-          <div class="card-details">
-            <div class="details-section">
-              <h4><i class="fas fa-users"></i> Наші працівники</h4>
-              <div class="staff-list">
-                <div class="staff">
-                  <img src="img/staff/anna.jpg" alt="Анна Мельник">
-                  <p>Анна Мельник<br><small>Керівник відділення</small></p>
-                </div>
-                <div class="staff">
-                  <img src="img/staff/vasyl.jpg" alt="Василь Коваль">
-                  <p>Василь Коваль<br><small>Майстер з ремонту</small></p>
-                </div>
-                <div class="staff">
-                  <img src="img/staff/tetyana.jpg" alt="Тетяна Шевченко">
-                  <p>Тетяна Шевченко<br><small>Приймальниця</small></p>
-                </div>
-              </div>
-            </div>
-
-            <div class="details-section">
-              <h4><i class="far fa-clock"></i> Графік роботи</h4>
-              <div class="schedule-info">
-                <p>Пн–Пт: 10:00–19:00</p>
-                <p>Сб: 10:00–17:00</p>
-                <p>Нд: вихідний</p>
-              </div>
-            </div>
-
-            <div class="details-section">
-              <h4><i class="fas fa-phone-alt"></i> Контакти</h4>
-              <div class="contact-info">
-                <p>
-                  <i class="fas fa-mobile-alt"></i>
-                  <a href="tel:+380970000002">+38 (097) 000-00-02</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </button>
-
-        <button class="location-card" onclick="toggleDetails(this)" onkeydown="if (event.key === 'Enter' || event.key === ' ') { toggleDetails(this); }">
-          <div class="card-header">
-            <div>
-              <h3><i class="fas fa-laptop-medical"></i> Гостомель</h3>
-              <p>вул. Свято-Покровська, 108б</p>
-            </div>
-            <div class="arrow"></div>
-          </div>
-          <div class="location-preview">
-            <img src="img/locations/hostomel.jpg" alt="Сервісний центр у Гостомелі" class="location-img">
-          </div>
-          <div class="card-details">
-            <div class="details-section">
-              <h4><i class="fas fa-users"></i> Наші працівники</h4>
-              <div class="staff-list">
-                <div class="staff">
-                  <img src="img/staff/luna.jpg" alt="Luna ШІ">
-                  <p>Luna ШІ<br><small>Технічний директор</small></p>
-                </div>
-                <div class="staff">
-                  <img src="img/staff/bohdan.jpg" alt="Остапчук Богдан">
-                  <p>Остапчук Богдан<br><small>Адміністратор</small></p>
-                </div>
-                <div class="staff">
-                  <img src="img/staff/anislav.jpg" alt="Аніслав Грабовський">
-                  <p>Аніслав Грабовський<br><small>Майстер з ремонту</small></p>
-                </div>
-              </div>
-            </div>
-
-            <div class="details-section">
-              <h4><i class="far fa-clock"></i> Графік роботи</h4>
-              <div class="schedule-info">
-                <p>Вт–Пт: 9:00–18:00</p>
-                <p>Субота: 10:00–16:00</p>
-                <p>Неділя-Понеділок: вихідний</p>
-              </div>
-            </div>
-
-            <div class="details-section">
-              <h4><i class="fas fa-phone-alt"></i> Контакти</h4>
-              <div class="contact-info">
-                <p>
-                  <i class="fas fa-mobile-alt"></i>
-                  <a href="tel:+380734142491">+38 (073) 414-24-91</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </button>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="problem-solver-section" id="problem-solver">
-    <div class="container">
-      <h2>Діагностика та рекомендації ✨</h2>
-      <p class="section-description">Опишіть вашу проблему, і наш інтелектуальний помічник надасть попередню діагностику та підкаже, яка з наших послуг може вам знадобитися.</p>
-      <div class="problem-solver-card">
-        <div class="form-group">
-          <label for="problemDescription">Опишіть, що сталося з вашою технікою:</label>
-          <textarea id="problemDescription" rows="6" placeholder="Наприклад: 'Мій ноутбук не вмикається після оновлення', або 'Пральна машина видає дивні звуки під час віджиму'." required></textarea>
-        </div>
-        <button id="generateSuggestionBtn" class="cta-button">
-          <i class="fas fa-magic"></i> Отримати рекомендацію ✨
-        </button>
-        <div id="loadingSpinner" class="loading-spinner"></div>
-        <div id="suggestionResult" class="suggestion-result">
-          </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact-section" id="contact-form">
-    <div class="container">
-      <h2>Контакти</h2>
-      <div class="contact-content">
-        <div class="contact-info-card">
-          <div class="contact-card">
-            <h3><i class="fas fa-phone-volume"></i> Телефони для зв'язку</h3>
-            <ul class="phone-list">
-              <li>
-                <i class="fas fa-mobile-alt"></i>
-                <div class="phone-info">
-                  <strong>LifeCell</strong>
-                  <a href="tel:+380635342228">+380 (63) 534-22-28</a>
-                </div>
-              </li>
-              <li>
-                <i class="fas fa-phone"></i>
-                <div class="phone-info">
-                  <strong>Kyivstar</strong>
-                  <a href="tel:+380961090110">+380 (96) 109-01-10</a>
-                </div>
-              </li>
-              <li>
-                <i class="fab fa-viber"></i>
-                <div class="phone-info">
-                  <strong>Viber/Vodafone</strong>
-                  <a href="tel:+380951053838">+380 (95) 105-38-38</a>
-                </div>
-              </li>
-              <li>
-                <i class="fas fa-headset"></i>
-                <div class="phone-info">
-                  <strong>Багатоканальний</strong>
-                  <a href="tel:+380443338648">+380 (44) 333-86-48</a>
-                </div>
-              </li>
-            </ul>
+          <div class="service-item">
+            <img src="icon-repair-benzotools.jpg" alt="Ремонт бензоінструменту">
+            <h3>Ремонт бензоінструменту та транспорту</h3>
+            <p>Обслуговування та ремонт генераторів, бензопил, квадроциклів та іншої техніки.</p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <form class="contact-form" id="contactForm" action="#" method="post">
-          <h3><i class="fas fa-paper-plane"></i> Надіслати повідомлення</h3>
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="name">Ваше ім'я</label>
-              <input type="text" id="name" name="name" required>
+    <section class="locations" id="locations">
+      <div class="container">
+        <h2>Наші локації</h2>
+        <div class="locations-wrapper">
+          <button class="location-card" type="button" aria-expanded="false">
+            <div class="card-header">
+              <div>
+                <h3><i class="fas fa-tools"></i> Буча</h3>
+                <p>вул. Руденко, 2</p>
+              </div>
+              <div class="arrow"></div>
             </div>
-            <div class="form-group">
-              <label for="phone">Ваш телефон</label>
-              <input type="tel" id="phone" name="phone" required>
+            <div class="location-preview">
+              <img src="img/locations/bucha.jpg" alt="Сервісний центр у Бучі" class="location-img">
             </div>
-          </div>
+            <div class="card-details">
+              <div class="details-section">
+                <h4><i class="fas fa-users"></i> Наші працівники</h4>
+                <div class="staff-list">
+                  <div class="staff">
+                    <img src="img/staff/ivan.jpg" alt="Іван Петренко">
+                    <p>Іван Петренко</p>
+                    <small>Старший майстер</small>
+                  </div>
+                  <div class="staff">
+                    <img src="img/staff/maria.jpg" alt="Марія Ковальчук">
+                    <p>Марія Ковальчук<br><small>Адміністратор</small></p>
+                  </div>
+                  <div class="staff">
+                    <img src="img/staff/oleg.jpg" alt="Олег Сидоренко">
+                    <p>Олег Сидоренко<br><small>Майстер з ремонту</small></p>
+                  </div>
+                </div>
+              </div>
+              <div class="details-section">
+                <h4><i class="far fa-clock"></i> Графік роботи</h4>
+                <div class="schedule-info">
+                  <p>Пн–Пт: 10:00–19:00</p>
+                  <p>Сб: 10:00–17:00</p>
+                  <p>Нд: вихідний</p>
+                </div>
+              </div>
+              <div class="details-section">
+                <h4><i class="fas fa-phone-alt"></i> Контакти</h4>
+                <div class="contact-info">
+                  <p><i class="fas fa-mobile-alt"></i> <a href="tel:+380970000001">+38 (097) 000-00-01</a></p>
+                </div>
+              </div>
+            </div>
+          </button>
+
+          <button class="location-card" type="button" aria-expanded="false">
+            <div class="card-header">
+              <div>
+                <h3><i class="fas fa-desktop"></i> Ірпінь</h3>
+                <p>вул. Соборна, 103</p>
+              </div>
+              <div class="arrow"></div>
+            </div>
+            <div class="location-preview">
+              <img src="img/locations/irpin.jpg" alt="Сервісний центр в Ірпені" class="location-img">
+            </div>
+            <div class="card-details">
+              <div class="details-section">
+                <h4><i class="fas fa-users"></i> Наші працівники</h4>
+                <div class="staff-list">
+                  <div class="staff">
+                    <img src="img/staff/anna.jpg" alt="Анна Мельник">
+                    <p>Анна Мельник<br><small>Керівник відділення</small></p>
+                  </div>
+                  <div class="staff">
+                    <img src="img/staff/vasyl.jpg" alt="Василь Коваль">
+                    <p>Василь Коваль<br><small>Майстер з ремонту</small></p>
+                  </div>
+                  <div class="staff">
+                    <img src="img/staff/tetyana.jpg" alt="Тетяна Шевченко">
+                    <p>Тетяна Шевченко<br><small>Приймальниця</small></p>
+                  </div>
+                </div>
+              </div>
+              <div class="details-section">
+                <h4><i class="far fa-clock"></i> Графік роботи</h4>
+                <div class="schedule-info">
+                  <p>Пн–Пт: 10:00–19:00</p>
+                  <p>Сб: 10:00–17:00</p>
+                  <p>Нд: вихідний</p>
+                </div>
+              </div>
+              <div class="details-section">
+                <h4><i class="fas fa-phone-alt"></i> Контакти</h4>
+                <div class="contact-info">
+                  <p><i class="fas fa-mobile-alt"></i> <a href="tel:+380970000002">+38 (097) 000-00-02</a></p>
+                </div>
+              </div>
+            </div>
+          </button>
+
+          <button class="location-card" type="button" aria-expanded="false">
+            <div class="card-header">
+              <div>
+                <h3><i class="fas fa-laptop-medical"></i> Гостомель</h3>
+                <p>вул. Свято-Покровська, 108б</p>
+              </div>
+              <div class="arrow"></div>
+            </div>
+            <div class="location-preview">
+              <img src="img/locations/hostomel.jpg" alt="Сервісний центр у Гостомелі" class="location-img">
+            </div>
+            <div class="card-details">
+              <div class="details-section">
+                <h4><i class="fas fa-users"></i> Наші працівники</h4>
+                <div class="staff-list">
+                  <div class="staff">
+                    <img src="img/staff/luna.jpg" alt="Luna ШІ">
+                    <p>Luna ШІ<br><small>Технічний директор</small></p>
+                  </div>
+                  <div class="staff">
+                    <img src="img/staff/bohdan.jpg" alt="Остапчук Богдан">
+                    <p>Остапчук Богдан<br><small>Адміністратор</small></p>
+                  </div>
+                  <div class="staff">
+                    <img src="img/staff/anislav.jpg" alt="Аніслав Грабовський">
+                    <p>Аніслав Грабовський<br><small>Майстер з ремонту</small></p>
+                  </div>
+                </div>
+              </div>
+              <div class="details-section">
+                <h4><i class="far fa-clock"></i> Графік роботи</h4>
+                <div class="schedule-info">
+                  <p>Вт–Пт: 9:00–18:00</p>
+                  <p>Субота: 10:00–16:00</p>
+                  <p>Неділя-Понеділок: вихідний</p>
+                </div>
+              </div>
+              <div class="details-section">
+                <h4><i class="fas fa-phone-alt"></i> Контакти</h4>
+                <div class="contact-info">
+                  <p><i class="fas fa-mobile-alt"></i> <a href="tel:+380734142491">+38 (073) 414-24-91</a></p>
+                </div>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem-solver-section" id="problem-solver">
+      <div class="container">
+        <h2>Діагностика та рекомендації ✨</h2>
+        <p class="section-description">Опишіть вашу проблему, і наш інтелектуальний помічник надасть попередню діагностику та підкаже, яка з наших послуг може вам знадобитися.</p>
+        <div class="problem-solver-card">
           <div class="form-group">
-            <label for="message">Повідомлення</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
+            <label for="problemDescription">Опишіть, що сталося з вашою технікою:</label>
+            <textarea id="problemDescription" rows="6" placeholder="Наприклад: 'Мій ноутбук не вмикається після оновлення', або 'Пральна машина видає дивні звуки під час віджиму'." required></textarea>
           </div>
-          <button type="submit">Надіслати</button>
-          <div id="formStatus" style="margin-top:15px;"></div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <section class="testimonials-section" id="testimonials">
-    <div class="container">
-      <h2>Відгуки клієнтів</h2>
-      <div class="testimonials-list">
-        <div class="testimonial-item">
-          <div class="testimonial-header">
-            <img src="img/rev/vens.jpg" alt="Іван П." class="client-avatar">
-            <div class="client-info">
-              <h4>Іван Петренко</h4>
-              <div class="rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <p class="testimonial-text">"Дуже швидко відремонтували мій телефон, майстри справжні професіонали. Рекомендую!"</p>
-        </div>
-
-        <div class="testimonial-item">
-          <div class="testimonial-header">
-            <img src="img/rev/stickman.jpg" alt="Ольга К." class="client-avatar">
-            <div class="client-info">
-              <h4>Ольга Ковальчук</h4>
-              <div class="rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-              </div>
-            </div>
-          </div>
-          <p class="testimonial-text">"Якісний сервіс та приємні майстри. Відремонтували ноутбук швидше, ніж обіцяли!"</p>
+          <button id="generateSuggestionBtn" type="button" class="cta-button">
+            <i class="fas fa-magic"></i> Отримати рекомендацію ✨
+          </button>
+          <div id="loadingSpinner" class="loading-spinner"></div>
+          <div id="suggestionResult" class="suggestion-result"></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="contact-section" id="contact-form">
+      <div class="container">
+        <h2>Контакти</h2>
+        <div class="contact-content">
+          <div class="contact-info-card">
+            <div class="contact-card">
+              <h3><i class="fas fa-phone-volume"></i> Телефони для зв'язку</h3>
+              <ul class="phone-list">
+                <li>
+                  <i class="fas fa-mobile-alt"></i>
+                  <div class="phone-info">
+                    <strong>LifeCell</strong>
+                    <a href="tel:+380635342228">+380 (63) 534-22-28</a>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-phone"></i>
+                  <div class="phone-info">
+                    <strong>Kyivstar</strong>
+                    <a href="tel:+380961090110">+380 (96) 109-01-10</a>
+                  </div>
+                </li>
+                <li>
+                  <i class="fab fa-viber"></i>
+                  <div class="phone-info">
+                    <strong>Viber/Vodafone</strong>
+                    <a href="tel:+380951053838">+380 (95) 105-38-38</a>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-headset"></i>
+                  <div class="phone-info">
+                    <strong>Багатоканальний</strong>
+                    <a href="tel:+380443338648">+380 (44) 333-86-48</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <form class="contact-form" id="contactForm">
+            <h3><i class="fas fa-paper-plane"></i> Надіслати повідомлення</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">Ваше ім'я</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Ваш телефон</label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Повідомлення</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit">Надіслати</button>
+            <div id="formStatus" style="margin-top:15px;"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials-section" id="testimonials">
+      <div class="container">
+        <h2>Відгуки клієнтів</h2>
+        <div class="testimonials-list">
+          <div class="testimonial-item">
+            <div class="testimonial-header">
+              <img src="img/rev/vens.jpg" alt="Іван П." class="client-avatar">
+              <div class="client-info">
+                <h4>Іван Петренко</h4>
+                <div class="rating">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="testimonial-text">"Дуже швидко відремонтували мій телефон, майстри справжні професіонали. Рекомендую!"</p>
+          </div>
+          <div class="testimonial-item">
+            <div class="testimonial-header">
+              <img src="img/rev/stickman.jpg" alt="Ольга К." class="client-avatar">
+              <div class="client-info">
+                <h4>Ольга Ковальчук</h4>
+                <div class="rating">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+            </div>
+            <p class="testimonial-text">"Якісний сервіс та приємні майстри. Відремонтували ноутбук швидше, ніж обіцяли!"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="main-footer">
     <div class="footer-container">
@@ -375,295 +350,48 @@
         <p>Ірпінь — вул. Соборна, 103</p>
         <p>Гостомель — вул. Свято-Покровська, 108б</p>
       </div>
-
       <div class="footer-section">
         <h3>📞 Контакти</h3>
         <ul class="footer-contacts">
-          <li>
-            <i class="fas fa-mobile-alt"></i>
-            <span><strong>LifeCell:</strong> <a href="tel:+380635342228">+380 (63) 534-22-28</a></span>
-          </li>
-          <li>
-            <i class="fas fa-phone"></i>
-            <span><strong>Kyivstar:</strong> <a href="tel:+380961090110">+380 (96) 109-01-10</a></span>
-          </li>
-          <li>
-            <i class="fab fa-viber"></i>
-            <span><strong>Viber:</strong> <a href="tel:+380951053838">+380 (95) 105-38-38</a></span>
-          </li>
-          <li>
-            <i class="fas fa-phone-volume"></i>
-            <span><strong>Багатоканальний:</strong> <a href="tel:+380443338648">+380 (44) 333-86-48</a></span>
-          </li>
+          <li><i class="fas fa-mobile-alt"></i><span><strong>LifeCell:</strong> <a href="tel:+380635342228">+380 (63) 534-22-28</a></span></li>
+          <li><i class="fas fa-phone"></i><span><strong>Kyivstar:</strong> <a href="tel:+380961090110">+380 (96) 109-01-10</a></span></li>
+          <li><i class="fab fa-viber"></i><span><strong>Viber:</strong> <a href="tel:+380951053838">+380 (95) 105-38-38</a></span></li>
+          <li><i class="fas fa-phone-volume"></i><span><strong>Багатоканальний:</strong> <a href="tel:+380443338648">+380 (44) 333-86-48</a></span></li>
         </ul>
       </div>
-
       <div class="footer-section">
         <h3>💌 Напиши нам</h3>
         <p><i class="fas fa-envelope"></i> <a href="mailto:info@kosaservice.com.ua">info@kosaservice.com.ua</a></p>
         <p><i class="far fa-clock"></i> Графік: Пн-Сб 10:00–19:00</p>
         <div class="social-icons">
-          <button class="viber tooltip" onclick="showQR('viber')" aria-label="Показати Viber QR-код">
+          <button type="button" class="viber tooltip" aria-label="Показати Viber QR-код">
             <i class="fab fa-viber"></i>
             <span class="tooltiptext">Viber</span>
-''          </button>
-          <button class="telegram tooltip" onclick="showQR('telegram')" aria-label="Показати Telegram QR-код">
+          </button>
+          <button type="button" class="telegram tooltip" aria-label="Показати Telegram QR-код">
             <i class="fab fa-telegram"></i>
             <span class="tooltiptext">Telegram</span>
           </button>
-          <button class="instagram tooltip" onclick="showQR('instagram')" aria-label="Показати Instagram QR-код">
+          <button type="button" class="instagram tooltip" aria-label="Показати Instagram QR-код">
             <i class="fab fa-instagram"></i>
             <span class="tooltiptext">Instagram</span>
           </button>
         </div>
       </div>
     </div>
-
     <div class="footer-copyright">
       <p>&copy; 2025 KoSA Service — Всі права захищені</p>
     </div>
   </footer>
 
-  <div id="qrPopup" class="qr-popup">
+  <div id="qrPopup" class="qr-popup" style="display: none;">
     <div class="qr-box">
-      <button class="close-btn" aria-label="Закрити" onclick="hideQR()" onkeydown="if (event.key === 'Enter' || event.key === ' ') { hideQR(); }">×</button>
+      <button class="close-btn" type="button" aria-label="Закрити">×</button>
       <img id="qrImage" src="" alt="QR Code">
       <p id="qrText" class="qr-text"></p>
     </div>
   </div>
 
-  <script>
-    /**
-     * Показує спливаюче вікно з QR-кодом для обраної платформи.
-     * @param {string} platform - Назва соціальної платформи ('viber', 'telegram', 'instagram').
-     */
-    function showQR(platform) {
-      const urls = {
-        viber: 'viber://chat?number=%2B380951053838',
-        telegram: 'https://t.me/KoSAService_Official', // Оновлено посилання
-        instagram: 'https://www.instagram.com/kosa_service/' // Оновлено посилання
-      };
-      const texts = {
-        viber: 'Відскануйте для зв\'язку у Viber',
-        telegram: 'Відскануйте для зв\'язку у Telegram',
-        instagram: 'Відскануйте для переходу в Instagram'
-      };
-
-      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(urls[platform])}`;
-      document.getElementById('qrImage').src = qrUrl;
-      document.getElementById('qrText').textContent = texts[platform]; // Встановлення тексту
-      document.getElementById('qrPopup').style.display = 'flex';
-    }
-
-    /**
-     * Приховує спливаюче вікно з QR-кодом.
-     */
-    function hideQR() {
-      document.getElementById('qrPopup').style.display = 'none';
-    }
-
-    /**
-     * Перемикає видимість деталей картки локації (акордеон).
-     * Закриває всі інші відкриті картки.
-     * @param {HTMLElement} card - Елемент картки локації, яку потрібно перемкнути.
-     */
-    function toggleDetails(card) {
-      // Закриваємо всі інші картки
-      document.querySelectorAll('.location-card.open').forEach(openCard => {
-        if (openCard !== card) {
-          openCard.classList.remove('open');
-        }
-      });
-      // Перемикаємо поточну картку
-      card.classList.toggle('open');
-    }
-
-    // Додаємо обробник подій для закриття QR-попапу при кліку поза ним
-    document.addEventListener('click', function(event) {
-      const qrPopup = document.getElementById('qrPopup');
-      const qrBox = document.querySelector('.qr-box');
-      if (qrPopup.style.display === 'flex' && !qrBox.contains(event.target) && !event.target.closest('.social-icons a')) {
-        hideQR();
-      }
-    });
-
-    /**
-     * Генерує рекомендації щодо послуг на основі опису проблеми користувача за допомогою Gemini API.
-     */
-    async function generateServiceSuggestion() {
-      const problemDescription = document.getElementById('problemDescription').value;
-      const suggestionResult = document.getElementById('suggestionResult');
-      const loadingSpinner = document.getElementById('loadingSpinner');
-      const generateButton = document.getElementById('generateSuggestionBtn');
-
-      if (!problemDescription.trim()) {
-        suggestionResult.innerHTML = '<p style="color: red;">Будь ласка, опишіть вашу проблему.</p>';
-        return;
-      }
-
-      suggestionResult.innerHTML = ''; // Очищаємо попередні результати
-      loadingSpinner.style.display = 'block'; // Показуємо спінер
-      generateButton.disabled = true; // Вимикаємо кнопку
-
-      const servicesList = `
-        - Ремонт побутової техніки (телевізорів, мультиварок, мікрохвильовок, пилососів, духовок)
-        - Ремонт комп'ютерної техніки (смартфонів, ноутбуків, моноблоків, системних блоків)
-        - Заправка картриджів (для принтерів та ремонт копіювальної техніки)
-        - Ремонт електротранспорту (електросамокатів, гіроскутерів)
-        - Ремонт ручного електроінструменту (дрелей, шуруповертів, відбійних молотків)
-        - Ремонт бензоінструменту та транспорту (генераторів, бензопил, квадроциклів)
-      `;
-
-      const prompt = `Ви - експерт з ремонту техніки компанії KoSA Service. Користувач описує свою проблему. Надайте коротку попередню діагностику (1-2 речення) та запропонуйте, яка з перерахованих нижче послуг KoSA Service найбільше підходить для вирішення цієї проблеми. Також вкажіть, яку інформацію користувачу варто підготувати для майстра. Відповідь має бути українською мовою.
-
-Опис проблеми користувача: "${problemDescription}"
-
-Наші послуги:
-${servicesList}
-
-Формат відповіді:
-**Попередня діагностика:** [Ваша діагностика]
-**Рекомендована послуга:** [Назва послуги з переліку]
-**Що підготувати для майстра:** [Список інформації]`;
-
-      let chatHistory = [];
-      chatHistory.push({
-        role: "user",
-        parts: [{
-          text: prompt
-        }]
-      });
-
-      try {
-        const payload = {
-          contents: chatHistory
-        };
-        const apiKey = ""; // Canvas надасть API ключ автоматично
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-        const response = await fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(`API error: ${response.status} - ${errorData.error.message}`);
-        }
-
-        const result = await response.json();
-        if (result.candidates && result.candidates.length > 0 &&
-          result.candidates[0].content && result.candidates[0].content.parts &&
-          result.candidates[0].content.parts.length > 0) {
-          const text = result.candidates[0].content.parts[0].text;
-          suggestionResult.innerHTML = `<p>${text.replace(/\n/g, '<br>')}</p>`; // Форматуємо для HTML
-        } else {
-          suggestionResult.innerHTML = '<p style="color: orange;">Не вдалося отримати рекомендацію. Спробуйте ще раз.</p>';
-        }
-      } catch (error) {
-        console.error('Error calling Gemini API:', error);
-        suggestionResult.innerHTML = `<p style="color: red;">Виникла помилка: ${error.message}. Будь ласка, спробуйте пізніше.</p>`;
-      } finally {
-        loadingSpinner.style.display = 'none'; // Приховуємо спінер
-        generateButton.disabled = false; // Вмикаємо кнопку
-      }
-    }
-
-    // Додаємо обробник подій для кнопки
-    document.addEventListener('DOMContentLoaded', () => {
-      const generateButton = document.getElementById('generateSuggestionBtn');
-      if (generateButton) {
-        generateButton.addEventListener('click', generateServiceSuggestion);
-      }
-    });
-    // --- Відправка форми у Telegram ---
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.getElementById('contactForm');
-      const statusDiv = document.getElementById('formStatus');
-      if (form) {
-        form.addEventListener('submit', async function(e) {
-          e.preventDefault();
-          statusDiv.textContent = '';
-          const name = document.getElementById('name').value.trim();
-          const phone = document.getElementById('phone').value.trim();
-          const message = document.getElementById('message').value.trim();
-
-          if (!name || !phone || !message) {
-            statusDiv.style.color = 'red';
-            statusDiv.textContent = 'Будь ласка, заповніть усі поля.';
-            return;
-          }
-
-          // ВСТАВТЕ СВІЙ ТОКЕН БОТА ТУТ
-          const BOT_TOKEN = '7589770061:AAGRFTtTSi49bipuejyaVB5hPUWLYEJHwGA'; // <-- ЗАМІНЕНО НА ВАШ ТОКЕН
-          const CHAT_ID = null; // Якщо потрібно надсилати в певний чат, вкажіть ID. Якщо ні — залиште null, бот надішле адміну.
-
-          const text = `Заявка з сайту KoSA Service:%0A%0A<b>Ім'я:</b> ${name}%0A<b>Телефон:</b> ${phone}%0A<b>Повідомлення:</b> ${message}`;
-
-          const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-          const payload = {
-            chat_id: CHAT_ID || '@KoSA_Service_Hostomel_bot',
-            text: text,
-            parse_mode: 'HTML'
-          };
-
-          try {
-            statusDiv.style.color = 'black';
-            statusDiv.textContent = 'Відправка...';
-            const response = await fetch(url, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload)
-            });
-            if (response.ok) {
-              statusDiv.style.color = 'green';
-              statusDiv.textContent = 'Дякуємо! Ваше повідомлення надіслано.';
-              form.reset();
-            } else {
-              statusDiv.style.color = 'red';
-              statusDiv.textContent = 'Помилка відправки. Спробуйте ще раз або напишіть нам у Telegram.';
-            }
-          } catch (err) {
-            statusDiv.style.color = 'red';
-            statusDiv.textContent = 'Виникла помилка. Спробуйте ще раз.';
-          }
-        });
-      }
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
-
 </html>
-<form id="contactForm">
-  <input name="name" placeholder="Ваше ім’я">
-  <input name="phone" placeholder="Телефон">
-  <textarea name="message" placeholder="Ваше повідомлення"></textarea>
-  <button type="submit">Відправити</button>
-</form>
-
-<script>
-document.getElementById('contactForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const data = {
-    name: e.target.name.value,
-    phone: e.target.phone.value,
-    message: e.target.message.value
-  };
-
-  const response = await fetch('https://bohdi1.github.io/kosa-site/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-
-  if (response.ok) {
-    alert('Успішно надіслано!');
-  } else {
-    alert('Щось пішло не так');
-  }
-});
-</script>
